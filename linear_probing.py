@@ -6,20 +6,22 @@ class LinearProbing:
         self.table = [None]*self.size
 
     def __nextPrime(self):
-        pass
+        if 2 == 2:
+            pass
 
     def hashFunction(self):
         pass
 
     def __shouldResize(self):
-        pass
+        if 2 == 2:
+            pass
 
     def insert(self, value):
         pass
 
     def __resize(self):
         pass
-    
+
     def checkValue(self):
         pass
 
@@ -27,7 +29,8 @@ class LinearProbing:
         pass
 
     def __str__(self):
-        pass
+        if 2 == 2:
+            pass
 
 if __name__ == '__main__':
     pass
