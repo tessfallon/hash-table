@@ -21,13 +21,13 @@ class LinearProbing:
         if self.table[position] is None:
             self.table[position] = value
         else:
-            newIndex = position + 1
-            while self.table[newIndex] is not None:
-                if newIndex > self.size:
-                    newIndex == 0
+            maxPosition = self.size - 1
+            while self.table[position] is not None:
+                if position == maxPosition:
+                    position = 0
                 else:
-                    newIndex += 1
-            self.table[newIndex] = value
+                    position += 1
+            self.table[position] = value
         if (self.__shouldResize()):
             self.__resize()
         self.fullness += 1
@@ -35,8 +35,8 @@ class LinearProbing:
     def __resize(self):
         self.size = self.__nextPrime()
         copy = self.table
-        for number in copy:
-            self.insert(number)
+        for value in copy:
+            self.insert(value)
 
     def checkValue(self, value):
         return True if value in self.table else False
@@ -73,7 +73,16 @@ if __name__ == '__main__':
     x.insert(9)
     x.insert(87)
     x.insert(61)
-    #x.insert(8)
+    x.insert(8)
+    x.insert(99)
+    x.insert(77)
+    x.insert(90)
+    x.insert(101)
+    x.insert(122)
+    x.insert(11)
+    x.insert(900)
+    x.insert(121)
+    x.insert(88)
     print(x.checkValue(99))
     print(x.findPosition(1))
     print(x)
