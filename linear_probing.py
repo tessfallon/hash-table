@@ -21,12 +21,13 @@ class LinearProbing:
         if self.table[position] is None:
             self.table[position] = value
         else:
-            while self.table[position] is not None:
-                if position == self.size:
-                    position = 0
+            newIndex = position + 1
+            while self.table[newIndex] is not None:
+                if newIndex > self.size:
+                    newIndex == 0
                 else:
-                    position += 1
-            self.table[position] = value
+                    newIndex += 1
+            self.table[newIndex] = value
         if (self.__shouldResize()):
             self.__resize()
         self.fullness += 1
@@ -37,11 +38,19 @@ class LinearProbing:
         for number in copy:
             self.insert(number)
 
-    def checkValue(self):
-        pass
+    def checkValue(self, value):
+        return True if value in self.table else False
 
-    def findPosition(self):
-        pass
+    def findPosition(self, value):
+        if self.checkValue(value) is False:
+            return False
+        hashPosition = self.hashFunction(value)
+        while self.table[hashPosition] != value:
+            if hashPosition != self.size:
+                hashPosition += 1
+            else:
+                hashPosition == 0
+        return hashPosition
 
     def __str__(self):
         hashTableString = '| '
@@ -64,5 +73,7 @@ if __name__ == '__main__':
     x.insert(9)
     x.insert(87)
     x.insert(61)
-    x.insert(8)
+    #x.insert(8)
+    print(x.checkValue(99))
+    print(x.findPosition(1))
     print(x)
