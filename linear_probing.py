@@ -28,15 +28,18 @@ class LinearProbing:
                 else:
                     position += 1
             self.table[position] = value
+        self.fullness += 1
         if (self.__shouldResize()):
             self.__resize()
-        self.fullness += 1
+
 
     def __resize(self):
-        self.size = self.__nextPrime()
+        self.__nextPrime()
         copy = self.table
-        for value in copy:
-            self.insert(value)
+        self.table = [None]*self.size
+        for number in copy:
+            if number is not None:
+                self.insert(number)
 
     def checkValue(self, value):
         return True if value in self.table else False
@@ -58,7 +61,7 @@ class LinearProbing:
             if bucket is None:
                 hashTableString += '[NONE] '
             else:
-                hashTableString += str(bucket) + ' '
+                hashTableString += '[' + str(bucket) + '] '
         hashTableString = hashTableString[:-1]
         hashTableString += ' |'
         return hashTableString
@@ -74,15 +77,13 @@ if __name__ == '__main__':
     x.insert(87)
     x.insert(61)
     x.insert(8)
-    x.insert(99)
-    x.insert(77)
-    x.insert(90)
-    x.insert(101)
-    x.insert(122)
-    x.insert(11)
-    x.insert(900)
-    x.insert(121)
+    x.insert(109)
+    x.insert(100)
+    x.insert(990)
+    x.insert(111)
+    x.insert(1002)
     x.insert(88)
-    print(x.checkValue(99))
-    print(x.findPosition(1))
+    x.insert(999)
+    print(x.checkValue(6))
+    print(x.findPosition(6))
     print(x)
