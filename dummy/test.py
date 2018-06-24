@@ -1,6 +1,6 @@
 def mergeSort(listToSort):
     if len(listToSort) < 2:
-        return listToSort
+        return
     mid = len(listToSort)//2
 
     lower = [x for x in listToSort[:mid]]
@@ -8,7 +8,12 @@ def mergeSort(listToSort):
 
     mergeSort(lower)
     mergeSort(upper)
-    return lower and upper
+
+    listToSort = putBackTogether(lower, upper, listToSort)
+
+    return listToSort
+
+
 
 def putBackTogether(lower, upper, listToSort):
     newLower = len(lower)
@@ -17,12 +22,13 @@ def putBackTogether(lower, upper, listToSort):
     left = 0
     right = 0
     total = 0
-    while left < len(lower) and right < len(upper):
+    while left < newLower and right < newUpper:
         if lower[left] < upper[right]:
-            listToSort[total] = [lower[left]]
+            listToSort[total] = lower[left]
             left +=1
         else:
-            listToSort[total] = [upper[right]]
+            listToSort[total] = upper[right]
+            right += 1
 
         total +=1
 
@@ -38,6 +44,9 @@ def putBackTogether(lower, upper, listToSort):
 
     return listToSort
 
+if __name__ == '__main__':
+    x = [12, 11, 19, 1, 9, 18, 13, 90]
+    print(mergeSort(x))
 
 
 
