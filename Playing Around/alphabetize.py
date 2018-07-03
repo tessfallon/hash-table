@@ -1,3 +1,31 @@
+#assigning letters to values
+a = 1
+b = 2
+c = 3
+d = 4
+e = 5
+f = 6
+g = 7
+h = 8
+i = 9
+j = 10
+k = 11
+l = 12
+m = 13
+n = 14
+o = 15
+p = 16
+q = 17
+r = 18
+s = 19
+t = 20
+u = 21
+v = 22
+w = 23
+x = 24
+y = 25
+z = 26
+#actual algorithm
 def mergeSort(listToSort):
     if len(listToSort) < 2:
         return
@@ -13,8 +41,6 @@ def mergeSort(listToSort):
 
     return listToSort
 
-
-
 def putBackTogether(lower, upper, listToSort):
     newLower = len(lower)
     newUpper = len(upper)
@@ -23,7 +49,7 @@ def putBackTogether(lower, upper, listToSort):
     right = 0
     total = 0
     while left < newLower and right < newUpper:
-        if lower[left] < upper[right]:
+        if lower[left] <= upper[right]:
             listToSort[total] = lower[left]
             left +=1
         else:
@@ -45,16 +71,35 @@ def putBackTogether(lower, upper, listToSort):
     return listToSort
 
 if __name__ == '__main__':
-    x = [12, 11, 19, 1, 9, 18, 13, 90]
+    x = ['Arenson Alex',
+'Aron Maddy',
+'Beacom Maddie',
+'Busch Katie',
+'Cook Stella',
+'Eggemeyer Greta',
+'Fallon	Tess',
+'Fessler Holly',
+'Flanagan Malley',
+'Forman Kaitlin',
+'Gottreich Claire',
+'Gray Nicole',
+'Hurley	Paige',
+'Kenter	Lizzie',
+'Kirkpatrick Emma',
+'Kenyon	Betsy',
+'Neumann Barbara',
+'Nicolaides	Lily',
+'Nolan Katie',
+'Palmer	Louise',
+'Pigott	Emma',
+'Ziomek	Chloe',
+'Renaud	Abby',
+'Resnick Anna',
+'Rice Caroline',
+'Roth Lilah',
+'Sawdey Kate',
+'Smith Madison',
+'Tragos	Olivia',
+'Wyse Katherine',
+'Zaban Olivia']
     print(mergeSort(x))
-
-
-
-
-
-#sort a LIST as fast as possible
-#ascending or descending order
-#import random
-#x = []
-#for i in range(100):
-    #x.insert(random.randint(0, 100))
